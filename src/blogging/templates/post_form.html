@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block head_title %} Create Post {% endblock %}
+
+{% block content %}
+
+    <h1>Create Post</h1>
+
+    {% if messages %}
+        {% for message in messages %}
+            {% autoescape off %}
+                <div class="alert alert-success">{{ message }}</div>
+            {% endautoescape %}
+        {% endfor %}
+    {% endif %}
+
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Post</button>
+    </form>
+
+{% endblock %}

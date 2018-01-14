@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from blogging.views import home
+from blogging.views import home, CreatePostView, blogs, MyBlogView,post_detail
 
 from users.api import UsersListAPI, UserDetailAPI
 
@@ -35,6 +35,10 @@ urlpatterns = [
     #path('pelis/crear', CreateMovieView.as_view(), name="create_movie_page"),
     #path('pelis/<int:pk>', movie_detail, name="movie_detail_page"),
     #path('pelis/', MyMoviesView.as_view(), name="my_movies_page"),
+    path('blogs/<str:username>/<int:pk>',post_detail ,name="posts_detail_page"),
+    path('blogs/<str:username>',MyBlogView.as_view() ,name="myblogs_page"),
+    path('blogs/', blogs, name='blogs_list_page'),
+    path('new_post', CreatePostView.as_view(), name="create_post_page"),
     path('', home, name="home_page"),
 
     # API REST

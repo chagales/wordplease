@@ -4,7 +4,7 @@ from rest_framework.viewsets import ModelViewSet
 
 from blogging.models import Post
 from blogging.permissions import PostPermission, CategoriesPermission
-from blooging.serializers import PostSerializer, PostListSerializer, CategorySerializer
+from blogging.serializers import PostSerializer, PostListSerializer, CategorySerializer
 
 
 class PostListAPI(ListCreateAPIView):

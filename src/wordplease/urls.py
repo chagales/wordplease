@@ -16,6 +16,29 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from users.api import UsersListAPI, UserDetailAPI
+from users.views import logout, LoginView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+
+    path('login', LoginView.as_view(), name="login_page"),
+    path('logout', logout, name="logout_page"),
+
+    #path('pelis/crear', CreateMovieView.as_view(), name="create_movie_page"),
+    #path('pelis/<int:pk>', movie_detail, name="movie_detail_page"),
+    #path('pelis/', MyMoviesView.as_view(), name="my_movies_page"),
+    #path('', home, name="home_page"),
+
+    # API REST
+    #path('api/1.0/hello/', HelloWorld.as_view(), name="api_hello_world"),
+    path('api/1.0/users/<int:pk>', UserDetailAPI.as_view(), name="api_user_detail"),
+    path('api/1.0/users/', UsersListAPI.as_view(), name="api_users_list"),
+
+    #path('api/1.0/movies/<int:pk>', MovieDetailAPI.as_view(), name="api_movie_detail"),
+    #path('api/1.0/movies/', MoviesListAPI.as_view(), name="api_movies_list"),
+
+    #path('api/1.0/', include(router.urls))
+
 ]

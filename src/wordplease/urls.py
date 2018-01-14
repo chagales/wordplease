@@ -16,20 +16,26 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from blogging.views import home
+
 from users.api import UsersListAPI, UserDetailAPI
-from users.views import logout, LoginView
+
+from users.views import logout, LoginView, SignupView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-
     path('login', LoginView.as_view(), name="login_page"),
+    path('signup', SignupView.as_view(), name= "signup_page"),
     path('logout', logout, name="logout_page"),
+
+    #<a href="{% url "blogs_list_page" %}">Blogs List </a> |
+    #        <a href="{% url "myblogs_page" %}">Blogs List </a> |
+    #        <a href="{% url "create_post_page" %}">Blogs List </a> |
 
     #path('pelis/crear', CreateMovieView.as_view(), name="create_movie_page"),
     #path('pelis/<int:pk>', movie_detail, name="movie_detail_page"),
     #path('pelis/', MyMoviesView.as_view(), name="my_movies_page"),
-    #path('', home, name="home_page"),
+    path('', home, name="home_page"),
 
     # API REST
     #path('api/1.0/hello/', HelloWorld.as_view(), name="api_hello_world"),

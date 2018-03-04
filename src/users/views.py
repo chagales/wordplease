@@ -36,10 +36,10 @@ class SignupView(View):
     return render(request, 'login_form.html', context)
 
   def post(self, request):
-    form = SignUpForm(request.POST)
+    form = SignupForm(request.POST)
     if form.is_valid():
       form.save()
-      return redirect('users_login')
+      return redirect('login_page')
 
     error_messages = ['Signup not valid', ]
     context = {
@@ -47,7 +47,7 @@ class SignupView(View):
       'signup_form': form
     }
 
-    return render(request, 'users/signup.html', context)
+    return render(request, 'signup_form.html', context)
 
 
 def logout(request):
